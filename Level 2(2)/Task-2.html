@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #70b1a9;
+        }
+        .calculator {
+            height: 80vh;
+            display:block;
+            justify-content: center;                       
+            width: 250px;
+            position: relative;
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding-top: 10mm;
+            padding-bottom:3%;
+            padding-left: 19mm;
+            padding-right: 19mm;
+            padding: auto;
+        }
+        .calculator input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 13px;
+        }
+        .calculator .btn {
+            width: 49px;
+            height: 48px;
+            padding: 9px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;    
+        }
+        .calculator .btn.equal {
+            width: 20%
+            
+        }.calculator .btn.c{
+            width: 20%
+        }
+        .display1{
+            text-align: right;
+            width: 50px;
+            margin-left: -14px; 
+        }
+        div{
+            padding-top: 3%;
+        }
+        h1{
+            color:color(from color srgb r g b);
+        }
+    </style>
+</head>
+<body style="border: #ccc;">
+    <div class="calculator" style="background:rgb(162, 112, 31)">
+        <h1><center>calculator</center></h1>
+        <input type="text" id="display" class="display1">
+        <div>
+            <input type="button" class="btn" value="Del" onclick="appendNumber()">
+            <input type="button" class="btn c" value="C" onclick="clearDisplay()">
+            <input type="button" class="btn" value="%" onclick="appendNumber('%')">
+            <input type="button" class="btn" value="/" onclick="appendOperator('/')">
+
+        </div>
+        
+        <div>
+            <input type="button" class="btn" value="7" onclick="appendNumber(7)">
+            <input type="button" class="btn" value="8" onclick="appendNumber(8)">
+            <input type="button" class="btn" value="9" onclick="appendNumber(9)">
+            <input type="button" class="btn" value="*" onclick="appendOperator('*')">
+        </div>
+        <div>
+            <input type="button" class="btn" value="4" onclick="appendNumber(4)">
+            <input type="button" class="btn" value="5" onclick="appendNumber(5)">
+            <input type="button" class="btn" value="6" onclick="appendNumber(6)">
+            <input type="button" class="btn" value="-" onclick="appendOperator('-')">
+        </div>
+        <div>
+            <input type="button" class="btn" value="1" onclick="appendNumber(1)">
+            <input type="button" class="btn" value="2" onclick="appendNumber(2)">
+            <input type="button" class="btn" value="3" onclick="appendNumber(3)">
+            <input type="button" class="btn" value="+" onclick="appendOperator('+')">
+        </div>
+        <div>
+            <input type="button" class="btn" value="0" onclick="appendNumber(0)">
+            <input type="button" class="btn" value="00" onclick="appendNumber('00')">
+            <input type="button" class="btn" value="." onclick="appendOperator('.')">
+            <input type="button" class="btn equal" value="=" onclick="calculate()">
+            
+        </div>
+       
+    </div>
+
+    <script>
+        let display = document.getElementById("display");
+        let expression = "";
+
+        function appendNumber(number) {
+            expression += number;
+            display.value = expression;
+        }
+
+        function appendOperator(operator) {
+            expression += operator;
+            display.value = expression;
+        }
+
+        function calculate() {
+            try {
+                let result = eval(expression);
+                display.value = result; 
+                expression = result;
+            } catch (error) {
+                display.value = "Error";
+                expression = "";
+            }
+        }
+
+        function clearDisplay() {
+            display.value = "";
+            expression = "";
+        }
+    </script>
+</body>
+</html>
